@@ -91,10 +91,16 @@ function App() {
 
 			<main>
 				<div className='cards__wrapper'>{
-						cats.map(cat => <CatCard />)
+						cats.map((cat, index) => 
+						<CatCard 
+							name={cat.name}
+							species={cat.species}
+							favFoods={cat.favFoods}
+							birthYear={cat.birthYear}
+							catIndex={index}
+						/>)
 				}</div>
 			</main>
-
 			<Footer />
 		</>
 	);

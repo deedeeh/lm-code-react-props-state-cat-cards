@@ -10,7 +10,7 @@ import cat9 from '../assets/images/cat9.jpg';
 import cat10 from '../assets/images/cat10.jpg';
 import cat11 from '../assets/images/cat11.jpg';
 import cat12 from '../assets/images/cat12.jpg';
-import { CatImageProps, CatImage } from './cat_image'
+import { CatImageProps, CatImage } from './cat_image';
 
 const images: Array<CatImageProps>  = [
 	{
@@ -111,31 +111,34 @@ const images: Array<CatImageProps>  = [
 	}
 ];
 
-interface CatCardProps {
-		id?: string;
-    name: string;
-	  species: string;
-	  favFoods: Array<string>;
-	  birthYear: number;
-    catIndex: number;
+interface CardProps {
+	id?: string;
+  name: string;
+	species: string;
+	favFoods: Array<string>;
+	birthYear: number;
+  index: number;
 }
 
-const CatCard: React.FC<CatCardProps> = ({ name, species, favFoods, birthYear, catIndex }) => {
+
+const Card: React.FC<CardProps> = ({ name, species, favFoods, birthYear, index}) => {
   return (
     <div className="card">
       <h3 className="card__text card__header">{name}</h3>
-      <div>
-        {catIndex < images.length && (
-				<CatImage 
-          image={images[catIndex].image}
-          altText={images[catIndex].altText}
-          licenceType={images[catIndex].licenceType}
-          licenceUrl={images[catIndex].licenceUrl}
-          attributionName={images[catIndex].attributionName}
-          attributionUrl={images[catIndex].attributionUrl}
-          />
-				)}
-      </div>
+			{species.includes('Cat') && (
+					<div>
+					{index < images.length && (
+					<CatImage 
+						image={images[index].image}
+						altText={images[index].altText}
+						licenceType={images[index].licenceType}
+						licenceUrl={images[index].licenceUrl}
+						attributionName={images[index].attributionName}
+						attributionUrl={images[index].attributionUrl}
+						/>
+					)}
+				</div>
+			)}
       <p className="card__text">Species: {species}</p>
       <p className="card__text">Favourite Food(s): {favFoods}</p>
       <p className="card__text">Birth Year: {birthYear}</p>
@@ -144,4 +147,4 @@ const CatCard: React.FC<CatCardProps> = ({ name, species, favFoods, birthYear, c
   )
 }
 
-export default CatCard;
+export default Card;

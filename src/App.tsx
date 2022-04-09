@@ -5,8 +5,7 @@ import { useState } from 'react';
 import Navbar from './components/navbar';
 import Header from './components/header';
 import Footer from './components/footer';
-import CatCard from './components/cat_card';
-import DogCard from './components/dog_card';
+import Card from './components/card';
 import catData from './data/catData';
 import dogData from './data/dog-data';
 
@@ -29,22 +28,23 @@ function App() {
 			<main>
 				<div className='cards__wrapper'>{
 						cats.map((cat, index) => 
-						<CatCard 
+						<Card 
 							key={cat.id}
 							name={cat.name}
 							species={cat.species}
 							favFoods={cat.favFoods}
 							birthYear={cat.birthYear}
-							catIndex={index}
+							index={index}
 						/>)
 				}{
 					dogs.map((dog, index) => 
-						<DogCard 
+						<Card 
 							key={dog.id}
 							name={dog.name}
 							species={dog.species}
 							favFoods={dog.favFoods}
 							birthYear={dog.birthYear}
+							index={index}
 						/>)
 				}</div>
 			</main>

@@ -140,7 +140,7 @@ const Card: React.FC<CardProps> = ({ name, species, favFoods, birthYear, index})
 				</div>
 			)}
       <p className="card__text">Species: {species}</p>
-      <p className="card__text">Favourite Food(s): {favFoods}</p>
+      <p className="card__text">Favourite Food(s): {favFoods.join(', ')}</p>
       <p className="card__text">Birth Year: {birthYear}</p>
       
     </div>

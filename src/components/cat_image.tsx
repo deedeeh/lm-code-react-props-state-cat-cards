@@ -1,4 +1,4 @@
-interface CatImageProps {
+export interface CatImageProps {
   image: string,
   altText: string,
   licenceType: string,
@@ -7,7 +7,7 @@ interface CatImageProps {
   attributionUrl?: string
 }
 
-const CatImage: React.FC<CatImageProps> = ({ image, altText, licenceType, licenceUrl, attributionName, attributionUrl }) => {
+export const CatImage: React.FC<CatImageProps> = ({ image, altText, licenceType, licenceUrl, attributionName, attributionUrl }) => {
  return (
    <>
     <img className='card_image' src={image} alt={altText} />
@@ -22,5 +22,3 @@ const CatImage: React.FC<CatImageProps> = ({ image, altText, licenceType, licenc
    </>
  ) 
 }
-
-export default CatImage;

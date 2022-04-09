@@ -10,9 +10,9 @@ import cat9 from '../assets/images/cat9.jpg';
 import cat10 from '../assets/images/cat10.jpg';
 import cat11 from '../assets/images/cat11.jpg';
 import cat12 from '../assets/images/cat12.jpg';
-import CatImage from './cat_image'
+import { CatImageProps, CatImage } from './cat_image'
 
-const images = [
+const images: Array<CatImageProps>  = [
 	{
 		image: cat1,
 		altText: 'Describe this cat!',
@@ -112,6 +112,7 @@ const images = [
 ];
 
 interface CatCardProps {
+		id?: string;
     name: string;
 	  species: string;
 	  favFoods: Array<string>;
@@ -119,23 +120,25 @@ interface CatCardProps {
     catIndex: number;
 }
 
-const CatCard: React.FC<CatCardProps> = (props) => {
+export const CatCard: React.FC<CatCardProps> = ({ name, species, favFoods, birthYear, catIndex }) => {
   return (
     <div className="card">
-      <h3 className="card__text card__header">{props.name}</h3>
-      <p>
-        {<CatImage 
-          image={images[props.catIndex].image}
-          altText={images[props.catIndex].altText}
-          licenceType={images[props.catIndex].licenceType}
-          licenceUrl={images[props.catIndex].licenceUrl}
-          attributionName={images[props.catIndex].attributionName}
-          attributionUrl={images[props.catIndex].attributionUrl}
-          />}
-      </p>
-      <p className="card__text">Species: {props.species}</p>
-      <p className="card__text">Favourite Food(s): {props.favFoods}</p>
-      <p className="card__text">Birth Year: {props.birthYear}</p>
+      <h3 className="card__text card__header">{name}</h3>
+      <div>
+        {catIndex < images.length && (
+				<CatImage 
+          image={images[catIndex].image}
+          altText={images[catIndex].altText}
+          licenceType={images[catIndex].licenceType}
+          licenceUrl={images[catIndex].licenceUrl}
+          attributionName={images[catIndex].attributionName}
+          attributionUrl={images[catIndex].attributionUrl}
+          />
+				)}
+      </div>
+      <p className="card__text">Species: {species}</p>
+      <p className="card__text">Favourite Food(s): {favFoods}</p>
+      <p className="card__text">Birth Year: {birthYear}</p>
       
     </div>
   )

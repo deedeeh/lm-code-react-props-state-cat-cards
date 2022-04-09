@@ -120,7 +120,7 @@ interface CatCardProps {
     catIndex: number;
 }
 
-export const CatCard: React.FC<CatCardProps> = ({ name, species, favFoods, birthYear, catIndex }) => {
+const CatCard: React.FC<CatCardProps> = ({ name, species, favFoods, birthYear, catIndex }) => {
   return (
     <div className="card">
       <h3 className="card__text card__header">{name}</h3>
